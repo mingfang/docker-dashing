@@ -1,1 +1,1 @@
-docker run -rm=true -v /var/run:/hrv -p 49303:3030 -p 22 -i -t dashing /bin/bash
+docker run -rm=true -p 49303:3030 -p 22 -i -t dashing /bin/bash

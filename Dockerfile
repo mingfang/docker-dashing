@@ -9,7 +9,6 @@ RUN dpkg-divert --local --rename --add /sbin/initctl && ln -s /bin/true /sbin/in
 
 #Supervisord
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor && mkdir -p /var/log/supervisor
-CMD ["/usr/bin/supervisord", "-n"]
 
 #SSHD
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&	mkdir /var/run/sshd && \
@@ -34,5 +33,11 @@ RUN dashing new dashboard && \
     bundle
 
 ADD supervisord-dashing.conf /etc/supervisor/conf.d/supervisord-dashing.conf
+
+# Start supervisord in background when entering an interactive shell
+RUN echo "/usr/bin/supervisord" >> /etc/bash.bashrc
+
+# Start supervisord as a foreground process when running without a shell
+CMD ["/usr/bin/supervisord", "-n"]
 
 EXPOSE 22 3030
