@@ -8,8 +8,8 @@ RUN echo 'deb http://archive.ubuntu.com/ubuntu trusty main universe' > /etc/apt/
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y supervisor && mkdir -p /var/log/supervisor
 
 #SSHD
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&	mkdir /var/run/sshd && \
-	echo 'root:root' |chpasswd
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server &&	mkdir /var/run/sshd
+RUN echo "root:root" | chpasswd 
 
 #Utilities
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y less net-tools inetutils-ping curl git telnet nmap socat dnsutils netcat software-properties-common
