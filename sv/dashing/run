@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#sv start socklog-unix || exit 1
+
+cd /dashboard
+
+exec 2>&1
+exec dashing start
