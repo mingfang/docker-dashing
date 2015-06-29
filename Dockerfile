@@ -1,5 +1,12 @@
 FROM ubuntu:14.04
- 
+
+#If you have a proxy, fill in your proxy ip & port, and uncomment the below 5 entries.
+#ENV NO_PROXY=localhost,127.0.0.1,/var/run/docker.sock,*.sock,*.corp
+#ENV HTTPS_PROXY=http://<fillin_your_proxy_ip>:<fillin_your_proxy_port>
+#ENV HTTP_PROXY=http://<fillin_your_proxy_ip>:<fillin_your_proxy_port>
+#ENV https_proxy=http://<fillin_your_proxy_ip>:<fillin_your_proxy_port>
+#ENV http_proxy=http://<fillin_your_proxy_ip>:<fillin_your_proxy_port>
+
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 
